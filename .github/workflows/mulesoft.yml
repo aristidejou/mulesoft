@@ -1,0 +1,21 @@
+name: MuleSoft
+
+on:
+  push:
+    branches:
+      - 'master'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install MuleSoft
+      run: |
+        sudo apt-get update
+        sudo apt-get install mule-runtime
+    - name: Run MuleSoft
+      run: |
+        mule start
+    - name: Stop MuleSoft
+      run: |
+        mule stop
